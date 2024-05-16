@@ -5,8 +5,38 @@ public class Customer {
     private String name;
     private String email;
     private String address;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Customer(String name, String email, String address, String image) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.image = image;
+    }
+
+    public Customer(int id, String name, String email, String address, String image) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.image = image;
+    }
 
     public Customer() {
+    }
+
+    public Customer(String name, String email, String address) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
     }
 
     public Customer(int id, String name, String email, String address) {

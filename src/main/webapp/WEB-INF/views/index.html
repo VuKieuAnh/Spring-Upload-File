@@ -23,6 +23,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Address</th>
+        <th>Img</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
@@ -33,6 +34,8 @@
         <td th:text="${row.getName()}"></td>
         <td th:text="${row.getEmail()}"></td>
         <td th:text="${row.getAddress()}"></td>
+        <td><img width="100" height="100" th:src="@{'/i/' + ${row.image}}" alt="" src=""></td>
+
         <td><a th:href="@{/customers/{id}/edit(id=${row.getId()})}">edit</a></td>
         <td><a th:href="@{/customers/{id}/delete(id=${row.getId()})}">delete</a></td>
         <td><a th:href="@{/customers/{id}/view(id=${row.getId()})}">view</a></td>
