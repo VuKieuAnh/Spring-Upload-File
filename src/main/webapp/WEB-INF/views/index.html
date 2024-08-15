@@ -31,8 +31,8 @@
     </thead>
     <tbody>
     <tr th:each="row,rowStat : ${customers}">
-        <td th:text="${row.getName()}"></td>
-        <td th:text="${row.getEmail()}"></td>
+        <td th:text="${row.name}"></td>
+        <td th:text="${row.email}"></td>
         <td th:text="${row.getAddress()}"></td>
         <td><img width="100" height="100" th:src="@{'/i/' + ${row.image}}" alt="" src=""></td>
 

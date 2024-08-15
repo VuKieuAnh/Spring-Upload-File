@@ -83,10 +83,37 @@ public class CustomerController {
     }
 
     @PostMapping("/update")
-    public String update(Customer customer) {
+    public String update(CustomerForm customerForm) {
+//        customerService.update(customer.getId(), customer);
+//        lay file ra
+        MultipartFile file = customerForm.getImage();
+//        lay ten file
+        String fileName = file.getOriginalFilename();
+
+//        tai file len-> copy file vao noi luu tru anh
+        try {
+            FileCopyUtils.copy(file.getBytes(), new File(upload + fileName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+//        co che chuyen doi giua customerForm -> customer
+        Customer customer = new Customer();
+        customer.setId(customerForm.getId());
+        customer.setName(customerForm.getName());
+        customer.setAddress(customerForm.getAddress());
+        customer.setEmail(customerForm.getEmail());
+        customer.setImage(fileName);
+//        luu lai
         customerService.update(customer.getId(), customer);
         return "redirect:/customers";
     }
+//    @PostMapping("/update")
+//    public String update(@RequestParam String name, String email, String address, int id) {
+//        Customer customer = new Customer(id, name, email, address);
+//        customerService.update(customer.getId(), customer);
+//        return "redirect:/customers";
+//    }
 
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable int id, Model model) {
